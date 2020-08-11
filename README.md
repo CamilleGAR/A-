@@ -8,8 +8,8 @@ Détails :
   
   • Nous utiliserons deux algorithmes de résolutions :
   
-   - En insérant les nouvelles positions à visiter dans une liste triée. La première valeur de la liste représente donc la prochaine position à visiter.
+   En insérant les nouvelles positions à visiter dans une liste triée. La première valeur de la liste représente donc la prochaine position à visiter.
     
-   - En utilisant un dictionnaire. On utilisera la fonction min() pour récupérer la prochaine position à visiter.
+   En utilisant un dictionnaire. On utilisera la fonction min() pour récupérer la prochaine position à visiter.
     
    Le but est de voir quelle méthode est la plus optimisée en terme de temps de calcul.
