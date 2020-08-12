@@ -1,29 +1,35 @@
 import pygame
 from pygame import *
-from spriteClic import SpriteClic
+from spriteCase import SpriteCase
+from variables import *
 
+
+#initialisation de pygame
 init()
-#fenetre = display.set_mode(flags = FULLSCREEN )
-fenetre = display.set_mode((1536,864))
 
-#Création du groupe de sprite : cases cliquables
-cases_group = sprite.RenderClear()
 
-#Création des sprites cliquables
-perso = image.load("perso.png").convert_alpha()
-sprite1 = SpriteClic(perso, Rect(0,0,0,0), cases_group)
-sprite2 = SpriteClic(perso, Rect(10,10,0,0), cases_group)
-for i in range(20000):
-    SpriteClic(perso, Rect(0,0,0,0), cases_group)
+#Création du groupe de sprite des cases (damier)
+cases_group = sprite.RenderUpdates()
+
+
+#Création des cases (damier)
+for x in range(NOMBRE_CASES_X) :
+    for y in range(NOMBRE_CASES_Y) :
+        SpriteCase(x*10 +POSITION_X, y*10 +POSITION_Y, cases_group)
+
+
+#Création de la surface principale
+fenetre = display.set_mode(flags = FULLSCREEN )
+fenetre.fill((255,255,255))
+display.flip()
+
 
 continuer = True
 while continuer :
     for event in pygame.event.get():
-        if event.type == QUIT:
+        if event.type == QUIT or event.type == MOUSEBUTTONDOWN :
             continuer = 0
             quit()
-        elif event.type == MOUSEBUTTONDOWN :
-            sprite1.rect.move_ip(3,3)
-    fenetre.fill((255,255,255))
-    cases_group.draw(fenetre)
-    display.flip()
+    cases_group.clear(fenetre,Surface((10,10)))
+    dirty = cases_group.draw(fenetre)
+    display.update(dirty)
