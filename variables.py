@@ -22,9 +22,13 @@ case_noire = surfarray.make_surface(pixels_noirs)
 pixels_blancs = np.array([[(255,255,255) for i in range(10)] for j in range(10)])
 case_blanche = surfarray.make_surface(pixels_blancs)
 
-IMAGES = {'neutre' : case_noire, 'blanc' : case_blanche}
+IMAGES = {'neutre' : case_noire, 'mur' : case_blanche}
 
 
 #Creation du background
 pixels_background = np.array([[(255,255,255) for i in range(1080)] for j in range(1920)])
 BACKGROUND = surfarray.make_surface(pixels_background)
+
+#Creation des fenetres select
+pixels_select = np.array([[(255,255,255) for i in range(40)] for j in range(30)])
+SELECT = surfarray.make_surface(pixels_select)

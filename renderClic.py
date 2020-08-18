@@ -8,6 +8,10 @@ from pygame.sprite import RenderUpdates
 
 class RenderClic(RenderUpdates):
     
-    def clic(self, x, y):
+    def left_clic(self, x, y):
         for sprite in self.sprites():
-            sprite.clic(x, y)
+            sprite.left_clic(x, y)
+            
+    def right_clic(self, x, y):
+        for sprite in self.sprites():
+            sprite.right_clic(x, y)

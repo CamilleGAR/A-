@@ -23,34 +23,8 @@ display.flip()
 #Création de l'horloge du programme
 clock = time.Clock()
 
-
-# """MAIN BROUILLON"""
-# #Boucle principale
-# continuer = True
-# while continuer :
-    
-#     #Cap de framerate
-#     clock.tick(60)
-    
-#     if mouse.get_pressed()[0]:
-#         pos = mouse.get_pos()
-#         for c in cases_group:
-#                 if c.clic(*pos):
-#                     c.add(refresh_group)
-                
-#     for event in pygame.event.get():
-#         print(event)
-#         if event.type == QUIT :
-#             continuer = 0
-#             quit()
-    
-#     dirty = refresh_group.draw(fenetre)
-#     display.update(dirty)
-    
-    
-"""MAIN FINAL"""    
+      
 if __name__ == '__main__' :
-    
     
     continuer = True
     while continuer :
@@ -70,16 +44,14 @@ if __name__ == '__main__' :
                 continuer = 0
                 quit()
                 
-            elif event.type == MOUSEBUTTONDOWN :
-                a_etoile.clic(*event.pos)
+            elif (event.type == MOUSEBUTTONDOWN and event.button == 1) \
+                or (event.type == MOUSEMOTION and event.buttons[0])  :
+                a_etoile.left_clic(*event.pos)
                 
-            elif event.type == MOUSEMOTION and a_etoile.mouse_pressed == True :
-                a_etoile.clic(*event.pos)
-                
-            elif event.type == MOUSEBUTTONUP :
-                a_etoile.unclic()                
-                
-                
+            elif (event.type == MOUSEBUTTONDOWN and event.button == 3) :
+                a_etoile.right_clic(*event.pos)
+                           
+                                
         #Affichage
         a_etoile.clear_group.clear(fenetre, BACKGROUND)
         dirty = a_etoile.draw_group.draw(fenetre)
